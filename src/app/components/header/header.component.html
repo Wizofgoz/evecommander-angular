@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <span>
+    <mat-menu #optionsMenu="matMenu">
+      <ng-container *ngIf="auth.isLoggedOut()">
+        <a routerLink="/login" mat-menu-item>login</a>
+      </ng-container>
+
+      <ng-container *ngIf="auth.isLoggedIn()">
+        <a routerLink="/profile" mat-menu-item>Profile</a>
+      </ng-container>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="optionsMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </span>
+</mat-toolbar>

@@ -1,0 +1,9 @@
+<mat-sidenav-container>
+  <mat-sidenav>
+    <app-menu></app-menu>
+  </mat-sidenav>
+  <section id="main-section">
+    <app-header [title]="title"></app-header>
+    <ng-content></ng-content>
+  </section>
+</mat-sidenav-container>

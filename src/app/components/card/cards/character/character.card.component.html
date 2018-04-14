@@ -1,0 +1,24 @@
+<mat-card (click)="onSelect()">
+  <mat-card-header>
+    <div mat-card-avatar style="background-image: url('{{imageURL}}')"></div>
+    <mat-card-title>{{character.name}}</mat-card-title>
+    <mat-card-subtitle><a routerLink="/character/{{data.resource.id}}/corporation/">{{corporation.name}}</a></mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>Security Status: {{character.securityStatus}}</mat-list-item>
+      <mat-list-item>Birthday: {{character.birthday}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Skill Points: {{characterSkills.totalSp}}</mat-list-item>
+      <mat-list-item>Unallocated SP: {{characterSkills.unallocatedSp}}</mat-list-item>
+      <mat-divider *ngIf="character.description"></mat-divider>
+      <mat-list-item *ngIf="character.description">Description: {{character.description}}</mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="onDelete()">DELETE</button>
+    <button mat-button (click)="onEdit()">REFRESH</button>
+  </mat-card-actions>
+</mat-card>

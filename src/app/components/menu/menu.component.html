@@ -1,0 +1,6 @@
+<mat-nav-list>
+  <a mat-list-item mat-ripple [style.position]="'relative'" routerLinkActive="selected" [routerLink]="[item.path]" *ngFor="item in items">
+    <!--<mat-icon *ngIf="item.icon">{{item.icon}}</mat-icon>-->
+    <span>{{item.title}}</span>
+  </a>
+</mat-nav-list>
