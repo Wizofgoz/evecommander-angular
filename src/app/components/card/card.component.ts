@@ -9,7 +9,7 @@ import { ResourceInterface } from '../../services/base.service';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnChanges {
-  @Input() resource: ResourceInterface;
+  @Input() resource: ResourceInterface<any>;
   @Output() select: EventEmitter<any> = new EventEmitter<any>();
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();
   @Output() edit: EventEmitter<any> = new EventEmitter<any>();

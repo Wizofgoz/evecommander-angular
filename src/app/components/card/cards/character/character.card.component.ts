@@ -1,13 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CardComponent } from '../card.component';
-import { CharacterService } from '../../../../services/character/character.service';
 import {
-  CharacterService,
   CorporationService,
   GetCharactersCharacterIdOk, GetCharactersCharacterIdSkillsOk,
   GetCorporationsCorporationIdOk, SkillsService
 } from '../../../../eve-online-angular-client';
 import { CacheService } from '../../../../services/cache/cache.service';
+import {ImageService} from '../../../../services/image/image.service';
 
 @Component({
   selector: 'app-character-card',
@@ -23,14 +22,13 @@ export class CharacterCardComponent implements OnInit {
   characterSkills: GetCharactersCharacterIdSkillsOk;
   corporation: GetCorporationsCorporationIdOk;
 
-  constructor(private characterService: CharacterService,
-              private eve: CharacterService,
+  constructor(private imageService: ImageService,
               private corporationService: CorporationService,
               private skillsService: SkillsService,
               private cache: CacheService) { }
 
   ngOnInit() {
-    this.imageURL = this.characterService.getCharacterImageURL(this.data.resource_id, 32);
+    this.imageURL = this.imageService.getCharacterImageURL(this.data.resource_id, 32);
 
     this.cache.get('characterSkills' + this.data.resource_id,
       this.skillsService.getCharactersCharacterIdSkills(this.data.resource_id))

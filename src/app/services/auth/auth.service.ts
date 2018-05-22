@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
-import { User } from '../user';
+import { User } from '../user/user.service';
 
 @Injectable()
 export class AuthService {

@@ -43,12 +43,10 @@ export class EveAuthService extends BaseService implements OnInit {
 
   /**
    * Opens new window to SSO to authorize a character
-   *
-   * @returns {{windowRef: Window; observer: Observable<Character>}}
    */
   authorizeCharacter() {
     const windowRef = window.open(this.getSSOURL());
-    this.echo.notification<Character>('character-auth').map().subscribe((character: Character) => {
+    this.echo.notification<Character>('character-auth').subscribe((character: Character) => {
       this.setCharacter(this.objectToResource(character));
       windowRef.close();
     });
@@ -69,14 +67,16 @@ export class EveAuthService extends BaseService implements OnInit {
    *
    * @param character_eve_id
    */
-  refreshToken(character_eve_id: number) {
-    return this.http.get<OAuth2Token>(API_BASE.EVE_COMMANDER + '/characters/' + character_eve_id + '/refresh')
-      .subscribe((token: OAuth2Token) => {
-        const tempChar = this.getCharacter(character_eve_id);
-        tempChar.data.token = token;
-        this.setCharacter(tempChar);
-        return token;
-      });
+  refreshToken(character_eve_id: number): Observable<OAuth2Token> {
+    return Observable.create((observer: Observer<OAuth2Token>) => {
+      this.http.get<OAuth2Token>(API_BASE.EVE_COMMANDER + '/characters/' + character_eve_id + '/refresh')
+        .subscribe((token: OAuth2Token) => {
+          const tempChar = this.getCharacter(character_eve_id);
+          tempChar.data.token = token;
+          this.setCharacter(tempChar);
+          observer.next(token);
+        });
+    });
   }
 
   /**
@@ -92,9 +92,11 @@ export class EveAuthService extends BaseService implements OnInit {
 
     const char = this.getCharacter(character_eve_id);
 
-    return Observable.create((observer: Observer) => {
+    return Observable.create((observer: Observer<OAuth2Token>) => {
       if (char.data.token.expires.isBefore()) {
-        observer.next(this.refreshToken(character_eve_id));
+        this.refreshToken(character_eve_id).subscribe((token: OAuth2Token) => {
+          observer.next(token);
+        });
       } else {
         observer.next(char.data.token);
       }
