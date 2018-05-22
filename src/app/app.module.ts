@@ -10,9 +10,11 @@ import { ApiModule } from './eve-online-angular-client';
 import { AngularLaravelEchoModule } from 'angular-laravel-echo';
 import { CardComponent } from './components/card/card.component';
 import { CardHostDirective } from './directives/card-host.directive';
-import { CharacterCardComponent } from './components/card/cards/character/character.card.component';
+import { CharacterCardComponent, CorporationCardComponent, AllianceCardComponent,
+         CoalitionCardComponent, HandbookCardComponent, FittingCardComponent } from './components/card/cards';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
+import { MomentModule } from 'ngx-moment';
 
 
 @NgModule({
@@ -24,13 +26,19 @@ import { ROUTES } from './app.routes';
     SidebarComponent,
     CardComponent,
     CardHostDirective,
-    CharacterCardComponent
+    CharacterCardComponent,
+    CorporationCardComponent,
+    AllianceCardComponent,
+    CoalitionCardComponent,
+    HandbookCardComponent,
+    FittingCardComponent
   ],
   imports: [
     BrowserModule,
     ApiModule,
     AngularLaravelEchoModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    MomentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

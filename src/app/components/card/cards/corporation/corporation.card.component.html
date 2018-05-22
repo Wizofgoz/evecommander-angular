@@ -1,0 +1,27 @@
+<mat-card (click)="onSelect()">
+  <mat-card-header>
+    <div mat-card-avatar [style.background-image]="imageURL"></div>
+    <mat-card-title>{{data.resource.name}} ({{data.resource.ticker}})</mat-card-title>
+    <mat-card-subtitle *ngIf="alliance">
+      <a routerLink="/alliance/{{data.resource.allianceId}}/">{{alliance.name}} ({{alliance.ticker}})</a>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>Founded: {{data.resource.dateFounded}}</mat-list-item>
+      <mat-list-item>Members: {{data.resource.memberCount}}</mat-list-item>
+
+      <mat-divider></mat-divider>
+      <mat-list-item *ngIf="ceo">CEO: <a routerLink="/character/{{data.resource.ceoId}}/">{{ceo.name}}</a></mat-list-item>
+      <mat-list-item *ngIf="data.resource.taxRate > 0">Tax Rate: {{data.resource.taxRate}}%</mat-list-item>
+
+      <mat-divider *ngIf="data.resource.description"></mat-divider>
+      <mat-list-item *ngIf="data.resource.description">Description: {{data.resource.description}}</mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="onEdit()">REFRESH</button>
+  </mat-card-actions>
+</mat-card>
