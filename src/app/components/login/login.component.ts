@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth/auth.service';
-import {Router} from '@angular/router';
-import {Character, CharacterService} from '../../services/character/character.service';
-import {ResourceInterface} from '../../services/base.service';
-import {EveAuthService} from '../../services/eve-auth/eve-auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
+import { Character, CharacterService } from '../../services/character/character.service';
+import { ResourceInterface } from '../../services/base.service';
+import { EveAuthService } from '../../services/eve-auth/eve-auth.service';
 
 @Component({
   selector: 'app-login',

@@ -46,7 +46,7 @@ export class EveAuthService extends BaseService implements OnInit {
    */
   authorizeCharacter() {
     const windowRef = window.open(this.getSSOURL());
-    this.echo.notification<Character>('character-auth').subscribe((character: Character) => {
+    this.echo.notification('character-auth').subscribe((character: Character) => {
       this.setCharacter(this.objectToResource(character));
       windowRef.close();
     });

@@ -30,10 +30,10 @@ export class CardComponent implements OnChanges {
     const viewContainerRef = this.cardHost.viewContainerRef;
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    (<Cards.CardComponent>componentRef.instance).resource = this.resource;
-    (<Cards.CardComponent>componentRef.instance).select.subscribe(e => this.select.next(e));
-    (<Cards.CardComponent>componentRef.instance).delete.subscribe(e => this.delete.next(e));
-    (<Cards.CardComponent>componentRef.instance).edit.subscribe(e => this.edit.next(e));
+    (<Cards.CardComponent<any>>componentRef.instance).resource = this.resource;
+    (<Cards.CardComponent<any>>componentRef.instance).select.subscribe(e => this.select.next(e));
+    (<Cards.CardComponent<any>>componentRef.instance).delete.subscribe(e => this.delete.next(e));
+    (<Cards.CardComponent<any>>componentRef.instance).edit.subscribe(e => this.edit.next(e));
     this.ready = true;
     this.ref.detectChanges();
   }
