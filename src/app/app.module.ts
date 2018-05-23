@@ -6,13 +6,15 @@ import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ApiModule } from './eve-online-angular-client';
+import { ApiModule } from 'esi-client-angular';
 import { AngularLaravelEchoModule } from 'angular-laravel-echo';
 import { CardComponent } from './components/card/card.component';
 import { CardHostDirective } from './directives/card-host.directive';
-import { CharacterCardComponent } from './components/card/cards/character/character.card.component';
+import { CharacterCardComponent, CorporationCardComponent, AllianceCardComponent,
+         CoalitionCardComponent, HandbookCardComponent, FittingCardComponent } from './components/card/cards';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
+import { MomentModule } from 'ngx-moment';
 
 
 @NgModule({
@@ -24,13 +26,19 @@ import { ROUTES } from './app.routes';
     SidebarComponent,
     CardComponent,
     CardHostDirective,
-    CharacterCardComponent
+    CharacterCardComponent,
+    CorporationCardComponent,
+    AllianceCardComponent,
+    CoalitionCardComponent,
+    HandbookCardComponent,
+    FittingCardComponent
   ],
   imports: [
     BrowserModule,
     ApiModule,
     AngularLaravelEchoModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    MomentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,7 +14,7 @@ export class MenuItem {
 
 @Injectable()
 export class MenuService {
-  private menuItems: MenuItem[];
+  private menuItems: MenuItem[] = [];
   activeMenuItem$: Observable<MenuItem>;
 
   constructor(private router: Router, private titleService: Title) {
@@ -58,11 +58,8 @@ export class MenuService {
     this.menuItems.splice(position, 0, item);
   }
 
-  removeMenuItem(item: MenuItem|number) {
-    let position = item;
-    if (item instanceof MenuItem) {
-      position = _.find(this.getMenuItems(), item);
-    }
+  removeMenuItem(item: MenuItem) {
+    const position = _.find(this.getMenuItems(), item);
 
     if (isNaN(position)) {
       return false;
