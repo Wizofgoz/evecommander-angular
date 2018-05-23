@@ -6,7 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ApiModule } from './eve-online-angular-client';
+import { ApiModule } from 'esi-client-angular';
 import { AngularLaravelEchoModule } from 'angular-laravel-echo';
 import { CardComponent } from './components/card/card.component';
 import { CardHostDirective } from './directives/card-host.directive';
